@@ -6,7 +6,7 @@
 }
 
 .quiz-container {
-  box-shadow: 0 4px 10px 4px rgb(0, 0, 0, 50%);
+  box-shadow: var(--shadow-4);
   padding: 2rem 3rem;
 }
 
@@ -18,21 +18,67 @@
 
 .quiz-question {
   margin-bottom: 3rem;
-  color: white;
+  color: var(--grey-50);
   font-weight: 500;
   font-size: 1.2rem;
   padding: 2rem;
-  background-color: #fcc822;
+  background-color: var(--amber-100);
   border-radius: 5px;
 }
 
+.quiz-timer-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 1rem;
+}
+
+.quiz-next-buttons {
+  grid-row: 1;
+  grid-column: 3;
+  align-items: center;
+  justify-content: end;
+  display: flex;
+  gap: 1rem;
+}
+
+.quiz-next-buttons button {
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.next-button {
+  background-color: var(--amber-50);
+  color: var(--grey-50);
+}
+
+.next-button:hover {
+  background-color: var(--amber-100);
+}
+
+.skip-button {
+  background-color: var(--grey-50);
+  color: var(--amber-50);
+}
+
+.skip-button:hover {
+  color: var(--amber-100);
+}
+
 .error {
-  color: red;
+  color: var(--scarlet-100);
 }
 
 .skip-message {
-  background-color: rgba(255, 0, 0, 0.8);
-  color: white;
+  background-color: var(--scarlet-100);
+  color: var(--grey-50);
   padding: 10px;
   border-radius: 5px;
   text-align: center;

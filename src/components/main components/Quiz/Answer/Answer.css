@@ -9,7 +9,7 @@
 
 .quiz-answer-button {
   border: none;
-  background-color: #d1d1d1;
+  background-color: var(--grey-300);
   width: 130px;
   height: 70px;
   font-size: 1rem;
@@ -25,5 +25,5 @@
 }
 
 .selected {
-  background-color: #fcc822;
+  background-color: var(--amber-100);
 }

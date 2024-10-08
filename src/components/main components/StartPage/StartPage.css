@@ -20,9 +20,9 @@
 
 .start-page-text a {
   text-decoration: none;
-  color: white;
+  color: var(--grey-50);
   font-weight: 700;
-  background-color: rgb(245, 208, 0);
+  background-color: var(--amber-100);
   width: fit-content;
   padding: 0.5rem 1rem;
   border-radius: 6px;
