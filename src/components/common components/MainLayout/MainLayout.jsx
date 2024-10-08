@@ -1,15 +1,14 @@
-import "./MainLayout.css";
-
+import { Link, Outlet } from "react-router-dom";
 import quizLogo from "../../../assets/logo.png";
-import { Outlet } from "react-router-dom";
+import "./MainLayout.css";
 
 const MainLayout = () => {
   return (
     <>
       <header className="quiz-grad-header">
-        <div className="quiz-grad-logo">
+        <Link to='/' className="quiz-grad-logo">
           <img src={quizLogo} alt="quiz grad"/>
-        </div>
+        </Link>
       </header>
       <Outlet />
     </>
