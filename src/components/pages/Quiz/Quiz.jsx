@@ -1,93 +1,79 @@
 import "./Quiz.css";
 import QUESTIONS from "../../../QUESTIONS.js";
-import { useEffect, useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
 import { IoCaretForward } from "react-icons/io5";
 import { FaForward } from "react-icons/fa6";
+import { useCallback, useState } from "react";
+import { Navigate } from "react-router-dom";
+import Question from "./Question";
+import Answer from "./Answer";
+import Timer from "./Timer";
 const Quiz = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
-  const [remainingTime, setRemainingTime] = useState(30000);
-  const [answers, setAnswers] = useState([]);
-  const shuffledAnswers = useRef();
+  const [userAnswers, setUserAnswers] = useState([]);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [error, setError] = useState(false);
+  const currentQuestionIndex = userAnswers.length;
 
-  if (isComplete) {
-    return <Navigate to="/result" state={{ answers }} />;
+  const quizFinshed = userAnswers.length === QUESTIONS.length;
+
+  function handleError() {
+    setError(true);
   }
 
-  const currentQuestionData = QUESTIONS[currentQuestion];
-  if (!currentQuestionData) {
-    return null;
-  }
+  const handleSelectAnswer = useCallback(
+    function handleSelectAnswer(answer) {
+      setSelectedAnswer(answer);
+      setError(false);
+    },
+    [setSelectedAnswer]
+  );
 
-  console.log("RESET");
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setRemainingTime((prevTime) => {
-        if (prevTime < 1000) {
-          clearInterval(timer);
-          handleNext();
-          return 30000;
-        }
-        return prevTime - 1000;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [currentQuestion]);
-
-  useEffect(() => {
-    shuffledAnswers.current = [...currentQuestionData.answers];
-    shuffledAnswers.current.sort(() => Math.random() - 0.5);
-  }, [currentQuestion]);
-
-  function handleAnswer(selectedAnswer) {
-    setAnswers((prevAnswers) => [...prevAnswers, selectedAnswer]);
+  function handleSkip() {
+    setUserAnswers((prevAnswers) => [...prevAnswers, null]);
+    setSelectedAnswer(null);
   }
 
   function handleNext() {
-    if (currentQuestion === QUESTIONS.length - 1) {
-      setIsComplete(true);
-    }
-    setCurrentQuestion((prevState) => prevState + 1);
-    setRemainingTime(60000);
+    setUserAnswers((prevAnswers) => [...prevAnswers, selectedAnswer]);
+    setSelectedAnswer(null);
   }
 
+  if (quizFinshed) {
+    return <Navigate to="/result" state={{ userAnswers, QUESTIONS }} />;
+  }
   return (
     <section className="quiz-page-container">
       <div className="quiz-container">
         <div className="quiz-page">
-          <h1>{QUESTIONS[currentQuestion].question}</h1>
-          <ul className="quiz-answers">
-            {shuffledAnswers.current.map((answer, index) => {
-              return (
-                <li key={index}>
-                  <button
-                    onClick={() => handleAnswer(answer)}
-                    className="quiz-answer-button"
-                  >
-                    {answer}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+          <Question
+            currentQuestion={QUESTIONS[currentQuestionIndex].question}
+          />
+          <Answer
+            options={QUESTIONS[currentQuestionIndex].answers}
+            onSelect={handleSelectAnswer}
+            selectedAnswer={selectedAnswer}
+          />
         </div>
         <div className="quiz-timer-buttons">
-          <div className="quiz-timer-img">
-            <img src="/Time.svg" alt="Timer Clock" />
-            <p>{remainingTime / 1000}</p>
-          </div>
+          <Timer onTimeOut={handleSkip} onReset={userAnswers.length}/>
           <div className="quiz-next-buttons">
-            <button className="next-button" onClick={handleNext}>
+            <button
+              onClick={!selectedAnswer ? handleError : handleNext}
+              className="next-button"
+            >
               Next <IoCaretForward />
             </button>
-            <button className="skip-button">
+            <button onClick={handleSkip} className="skip-button">
               skip <FaForward />
             </button>
           </div>
         </div>
+        {error && (
+          <h4 className="error">
+            Select an option or
+            <br />
+            Click "Skip" if you don't know the answer
+          </h4>
+        )}
       </div>
     </section>
   );
