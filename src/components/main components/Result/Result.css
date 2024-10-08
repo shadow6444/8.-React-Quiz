@@ -1,0 +1,148 @@
+.result-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.result-summary {
+  box-shadow: 0 4px 10px 4px rgb(0, 0, 0, 50%);
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+}
+
+.result-summary img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+
+.result-summary h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.summary-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 3rem 3rem 2rem;
+}
+
+.result-summary hr {
+  border: 1px solid rgba(128, 128, 128, 0.541);
+  width: 80%;
+  margin-bottom: 2rem;
+}
+
+.summary-score div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.skipped-answer-share h2 {
+  color: grey;
+  font-size: 2.3rem;
+}
+
+.skipped-answer-share h4 {
+  color: grey;
+  font-size: 1.2rem;
+}
+
+.correct-answer-share h2 {
+  color: rgba(0, 128, 0, 0.795);
+  font-size: 2.3rem;
+}
+
+.correct-answer-share h4 {
+  color: rgba(0, 128, 0, 0.795);
+  font-size: 1.2rem;
+}
+
+.wrong-answer-share h2 {
+  color: rgba(255, 0, 0, 0.795);
+  font-size: 2.3rem;
+}
+
+.wrong-answer-share h4 {
+  color: rgba(255, 0, 0, 0.795);
+  font-size: 1.2rem;
+}
+
+.wrong-answers {
+  list-style-type: none;
+  padding: 0;
+}
+
+.wrong-answers li {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-number {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-left: 2rem;
+}
+
+.question-number h2 {
+  font-weight: 650;
+  font-size: 1.2rem;
+  color: #161616
+}
+
+.question-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.question-content h3 {
+  margin-bottom: 0.8rem;
+  font-weight: 650;
+}
+
+.wrong-user-answer {
+  margin-bottom: 0.5rem;
+}
+
+.question-content p {
+  font-weight: 500;
+}
+
+.skipped {
+  color: grey;
+}
+
+.wrong {
+  color: red;
+}
+
+.correct-answer span {
+  color: green;
+}
+
+.congrats-message{
+    text-align: center;
+}
+
+.congrats-message h1{
+    font-size: 2rem;
+    word-spacing: 5px;
+    color: #fcc822;
+    line-height: 50px;
+}
