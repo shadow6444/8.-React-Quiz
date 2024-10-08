@@ -1,8 +1,9 @@
-# React + Vite
+# React Quiz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a react quiz project. It has a user friendly interface where user can interact with the start page and start the quiz by clicking a button.
 
-Currently, two official plugins are available:
+After clicking start button the quiz starts and user can answer the questions by selecting an option and clicking next or if the user don't know the answer skip the question.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+In the end the user will be displayed of hwo many of them are skipped, correct and wrong and the correct answers to the user's wrong answer will be displayed.
+
+There is a confetti for the user who selects all the right answers.
