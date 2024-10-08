@@ -1,0 +1,9 @@
+.quiz-question {
+  margin-bottom: 3rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 2rem;
+  background-color: #fcc822;
+  border-radius: 5px;
+}
