@@ -7,3 +7,10 @@ After clicking start button the quiz starts and user can answer the questions by
 In the end the user will be displayed of hwo many of them are skipped, correct and wrong and the correct answers to the user's wrong answer will be displayed.
 
 There is a confetti for the user who selects all the right answers.
+
+first install the vite packages by using
+npm install vite --save-dev
+
+and then run it using
+
+npm run dev
